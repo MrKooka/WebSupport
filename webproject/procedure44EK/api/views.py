@@ -1,4 +1,5 @@
 from pprint import pprint as pp
+from django.db.models.query_utils import Q
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import ProcSerializer,CatalogProcedureStatusSerializer
@@ -20,6 +21,8 @@ class Get44ekProcInfo(APIView):
             procedure = Procedures.objects.filter(registrationnumber=regNum).first()
             return Response(ProcSerializer(procedure).data)
         return Response(None)
+
+
 
 class GetProcedureStatus(APIView):
     def get(self, request, format=None):

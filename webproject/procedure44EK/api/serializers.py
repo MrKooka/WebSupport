@@ -72,6 +72,7 @@ class ProcSerializer(serializers.ModelSerializer):
     class Meta:
         model = Procedures
         fields = [
+            'id',
             'registrationnumber',
             'status',
             'requestenddatetime',
@@ -83,7 +84,7 @@ class ProcSerializer(serializers.ModelSerializer):
         ]
     @staticmethod
     def get_lot(obj):
-        return LotSerializer(Lot.objects.filter(procedureid=obj), many=True).data
+        return LotSerializer(Lot.objects.filter(procedureid=obj).first()).data
 
         
 class CatalogProcedureStatusSerializer(serializers.ModelSerializer):
