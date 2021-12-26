@@ -4,6 +4,8 @@ from rest_framework import serializers
 from ..models import CatalogProcedureStatus, Procedures, Lot, Protocol, Request, Procedureevent
 
 
+from django.db.models import Q
+
 class ProcedureEventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Procedureevent
@@ -63,7 +65,9 @@ class ProtocolSerializer(serializers.ModelSerializer):
 
     @staticmethod
     def get_event(obj):
-        return ProcedureEventSerializer(Procedureevent.objects.filter(protocolid=obj), many=True).data
+        protocolEventsAll = Procedureevent.objects.filter(protocolid=obj)
+        events = protocolEventsAll.exclude(Q(typecode__contains='contract') & Q(typecode__contains='request.') & Q(typecode__contains='procedure.'))
+        return ProcedureEventSerializer(events, many=True).data
 
 
 class ProcSerializer(serializers.ModelSerializer):
@@ -91,3 +95,5 @@ class CatalogProcedureStatusSerializer(serializers.ModelSerializer):
     class Meta:
         model = CatalogProcedureStatus
         fields = '__all__'
+
+

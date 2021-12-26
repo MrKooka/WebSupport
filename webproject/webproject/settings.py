@@ -39,8 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'procedure44EK.apps.Procedure44EkConfig',
+    'procedure44EA.apps.Procedure44EaConfig',
+
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -104,7 +107,7 @@ DATABASES = {
         'PORT': '3306',
 
     },
-    'sectioks': {
+    'sectionks': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sectionks',
         'USER': os.environ.get('etpuser'),
@@ -179,3 +182,9 @@ STATICFILES_DIRS = (
  os.path.join(BASE_DIR,'web-ui/build/static'),
 )
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}

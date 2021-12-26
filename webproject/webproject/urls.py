@@ -21,5 +21,6 @@ from procedure44EK.views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='home'),
-    path('api/44ek/', include('procedure44EK.api.urls'))
+    path('api/44ek/', include('procedure44EK.api.urls')),
+    path('api/44ea/', include('procedure44EA.api.urls'))
 ]
