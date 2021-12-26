@@ -35,3 +35,7 @@ class GetProcedureStatus(APIView):
         statusList = CatalogProcedureStatus.objects.using('catalog_44').all()
         return Response(CatalogProcedureStatusSerializer(statusList, many=True).data)
 
+class CancelProtocol(APIView):
+    def post(self, request, format=None):
+        print(request.data)
+        return Response({'name':'ALex'})
