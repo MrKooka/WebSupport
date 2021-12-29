@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'procedure44EK.apps.Procedure44EkConfig',
     'procedure44EA.apps.Procedure44EaConfig',
+    'protocol.apps.ProtocolConfig',
 
     'rest_framework',
     'corsheaders',
@@ -188,3 +189,5 @@ GRAPH_MODELS = {
   'all_applications': True,
   'group_models': True,
 }
+
+PROTOCOL_PROCEDURES = [125,127,131,133,135,141,143,145,147,149,155,157,159,161,163,169,171,173,175,177,179,305,307,309,313,327,333]

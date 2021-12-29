@@ -2,10 +2,8 @@ from pprint import pprint as pp
 from django.db.models.query_utils import Q
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .serializers import ProcSerializer,CatalogProcedureStatusSerializer
-                         
+from .serializers import ProcSerializer, CatalogProcedureStatusSerializer
 from ..models import Procedures, CatalogProcedureStatus
-
 
 
 class Test(APIView):
@@ -35,7 +33,8 @@ class GetProcedureStatus(APIView):
         statusList = CatalogProcedureStatus.objects.using('catalog_44').all()
         return Response(CatalogProcedureStatusSerializer(statusList, many=True).data)
 
+
 class CancelProtocol(APIView):
     def post(self, request, format=None):
         print(request.data)
-        return Response({'name':'ALex'})
+        return Response({'name': 'ALex'})
