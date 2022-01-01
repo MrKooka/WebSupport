@@ -14,7 +14,7 @@ class GetProtocol(APIView):
                      .using('sectionks')
                      .filter(
                          regnumber=regNum,
-                         typeid__in=settings.PROTOCOL_PROCEDURES,
+                         
                          packetstatusid=5,
                          confirmationresult=1)
                      .select_related('typeid')
